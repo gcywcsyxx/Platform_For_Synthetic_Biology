@@ -38,4 +38,3 @@ class Spider:
         for _, data in enumerate(keywords):
             thread_s = threading.Thread(target=self.Run, args=(method, data))
             thread_s.start()
-            thread_s.join()
