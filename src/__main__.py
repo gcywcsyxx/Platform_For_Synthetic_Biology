@@ -17,15 +17,22 @@ headers = {
 }
 
 data = {
-    "searchType": "MulityTermsSearch",
-    "ParamIsNullOrEmpty": "false",
-    "Islegal": "false",
     "Content": "基因合成"
 }
 
-def main(url, headers, method, data={}):
-    example = spider.Spider(url, headers)
-    example.run(method, data)
+keywords=[
+        {"Content": "基因合成"},
+        {"Content": "云计算"},
+        {"Content": "数据挖掘"},
+        {"Content": "深度学习"},
+        {"Content": "嵌入式系统"}
+]
+
+def main(url:str, headers:dict, method:str, keywords:list):
+    # example = spider.Spider(url, headers)
+    # example.Run(method, data)
+    example_2 = spider.Spider(url, headers)
+    example_2.AsyncRun(method, keywords)
 
 if __name__ == '__main__':
-    main(url, headers, "POST", data=data)  
+    main(url, headers, "POST", keywords)  

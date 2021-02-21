@@ -1,13 +1,14 @@
 import requests
 import sys
+import threading
 
 class Spider:
 
-    def __init__(self, url, headers):
+    def __init__(self, url:str, headers:dict):
         self.url = url
         self.headers = headers 
 
-    def __NewHttpRequest(self, method, data={}):
+    def __NewHttpRequest(self, method:str, data={}) -> str:
         try:
             if method == "GET":
                 response = requests.get(url=self.url, headers=self.headers, data=data)
@@ -26,9 +27,15 @@ class Spider:
              print("error: %s", err)
              sys.exit()       
 
-    def run(self, method, data={}):
+    def Run(self, method:str, data={}):
         res = self.__NewHttpRequest(method, data)
         if not res == None:
             print(res)
         else:
-            print("faild!\n")              
+            print("faild!\n")    
+
+    def AsyncRun(self, method:str, keywords:list):
+        for _, data in enumerate(keywords):
+            thread_s = threading.Thread(target=self.Run, args=(method, data))
+            thread_s.start()
+            thread_s.join()
