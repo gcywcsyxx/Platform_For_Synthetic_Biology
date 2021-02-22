@@ -8,7 +8,7 @@ class Spider:
         self.url = url
         self.headers = headers 
 
-    def __NewHttpRequest(self, method:str, data={}) -> str:
+    def _NewHttpRequest(self, method:str, data={}) -> str:
         try:
             if method == "GET":
                 response = requests.get(url=self.url, headers=self.headers, data=data)
@@ -28,13 +28,16 @@ class Spider:
              sys.exit()       
 
     def Run(self, method:str, data={}):
-        res = self.__NewHttpRequest(method, data)
+        res = self._NewHttpRequest(method, data)
         if not res == None:
             print(res)
         else:
             print("faild!\n")    
 
     def AsyncRun(self, method:str, keywords:list):
-        for _, data in enumerate(keywords):
-            thread_s = threading.Thread(target=self.Run, args=(method, data))
-            thread_s.start()
+        threads = []
+        for index, data in enumerate(keywords):
+            threads.append(threading.Thread(target=self.Run, args=(method, data)))
+            threads[index].start()
+        for index in range(len(threads)):
+            threads[index].join()
