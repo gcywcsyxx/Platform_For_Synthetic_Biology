@@ -1,23 +1,25 @@
-#如果不能安装 或者安装后不能运行，可能因为模块需要安装历史版本 新版本可能不可以！
+# 如果不能安装 或者安装后不能运行，可能因为模块需要安装历史版本 新版本可能不可以！
 pyLDAvis==2.1.2
 streamlit==0.68.0
-#如果python中打不开文件（cannot find...），则需要将文件地址换成完全地址，例如/home/gcy/下载/python结巴分词+云图绘制/可视化工具/Raw_Comment.txt，而不是./或者relative path
+# 如果python中打不开文件（cannot find...），则需要将文件地址换成完全地址，例如/home/gcy/下载/python结巴分词+云图绘制/可视化工具/Raw_Comment.txt，而不是./或者relative path
 
-#streamlit issues
+# streamlit issues
 1、streamlit需要开启wide mode才能显示全缩放的网页
 2、开启run on save后 每每保存一次python代码 会自动运行，不用手动刷新了
 
-#LDA模型：需要提前用os调用运行model文件夹中的模型 并在main中输入对应的端口才可在同一个窗口中展示！
+# LDA模型：需要提前用os调用运行model文件夹中的模型 并在main中输入对应的端口才可在同一个窗口中展示！
 注意：windows环境应改成python！！而不是python3
 1、data目前只能是标注需要的csv文件，后期可以让其兼容txt 前提是读懂LDA模型文件代码
 
-#地图绘制 
+# 地图绘制 
 尽量才从streamlit内置的地图模块！更加清晰 GIS赏心悦目
-#streamlit内置知识图谱配置好 展示论文之间的链接关系
-#信息加载时的进度条可视化展示并计时，更像一个成熟的web后端应用！
-#
-##################################################################
-###整体架构###
+*streamlit内置知识图谱配置好 展示论文之间的链接关系*
+*信息加载时的进度条可视化展示并计时，更像一个成熟的web后端应用!*
+
+
+
+
+### 整体架构
 整体分为四个页面，架构为左边sidebar，右边是主要展示区域，宽屏模式！
 1、搜索引擎、可视化页面-多种图表、按钮、仪表盘
 搜索引擎-合成生物学安全相关名词引擎-十万、百万级数据-mysql数据库
@@ -40,14 +42,3 @@ search
 tqdm进度条功能
 
 
-
-
-#############################################
-#需要提前安装的python模块
-re101
-pandas
-matplotlib
-jieba
-collections2
-wordcloud
-tqdm
