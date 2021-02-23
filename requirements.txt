@@ -1,0 +1,9 @@
+re101
+pandas
+matplotlib
+jieba
+collections2
+wordcloud
+tqdm
+requests
+pyquery
