@@ -1,6 +1,5 @@
-import spider
-import utils
-
+from spider import spider
+from spider import utils
 url = "https://search.cnki.com.cn/Charts/GetTrendJson"
 
 headers = {
