@@ -27,3 +27,6 @@ user_agent_pool = [
 
 def GetUserAgent() -> str:
     return random.choice(user_agent_pool)
+
+def GetProxy() -> str:
+    return ""    

@@ -1,19 +1,19 @@
-
+import pandas as pd
+import re
+import jieba
+import collections
+from wordcloud import WordCloud, ImageColorGenerator, STOPWORDS
+import matplotlib.pyplot as plt
+from PIL import Image
+import streamlit as st
+import schedule
+import time
+import tqdm
 """
 This file need to refactor because it's hard to read
 """
 def func():
-    import pandas as pd
-    import re
-    import jieba
-    import collections
-    from wordcloud import WordCloud, ImageColorGenerator, STOPWORDS
-    import matplotlib.pyplot as plt
-    from PIL import Image
-    import streamlit as st
-    import schedule
-    import time
-    import tqdm
+    
 
     word_cloud=st.checkbox('词云图')
     if word_cloud:

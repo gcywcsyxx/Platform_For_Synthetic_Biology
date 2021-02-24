@@ -1,8 +1,8 @@
-import spider
-import pyquery
+from spider import Spider
+from pyquery import PyQuery as pq
 
 
-class WeiBo(spider.Spider):
+class WeiBo(Spider):
     
     def __init__(self, url:str, headers:dict):
         super(WeiBo, self).__init__(url, headers)
@@ -11,20 +11,19 @@ class WeiBo(spider.Spider):
         self.login_url = ""
 
     """
-    TODO: login
-    """
-    def __login():
-        print("hello")
-
-    def __request(self, data->str) -> str:
-        data = self._NewHttpRequest("GET", data=data)
-        return data    
-
-    """
     TODO: parse html to extract information
     """
     def __parse(self, dom:str) -> list:
-        return []
+        
+
+   def Run(self, method: str, data={}) -> None:
+       response = self._NewHttpRequest(method, data=data)
+       if response != None:
+           dom, _ = response.text
+           res = self.__parse(method, dom)
+           resp = pq(res).find('.card')  
+           print(resp)
+              
 
 
 

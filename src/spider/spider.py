@@ -19,7 +19,7 @@ class Spider:
                 sys.exit()
 
             if response.status_code == 200:
-                return response.json()
+                return response.text, response.json()
             else:
                 return None
 
@@ -27,8 +27,8 @@ class Spider:
              print("error: %s", err)
              sys.exit()       
 
-    def Run(self, method:str, data={}) -> None:
-        res = self._NewHttpRequest(method, data)
+    def Run(self, method: str, data={}) -> None:
+        _, res = self._NewHttpRequest(method, data)
         if not res == None:
             print(res)
         else:
