@@ -1,22 +1,21 @@
-from spider import Spider
 from pyquery import PyQuery as pq
-
+from .spider import Spider
 
 class WeiBo(Spider):
     
-    def __init__(self, url:str, headers:dict):
-        super(WeiBo, self).__init__(url, headers)
-        self.username = username
-        self.password = password
-        self.login_url = ""
+    def __init__(self, url:str, headers:dict) -> None:
+       self.url = url
+       self.headers = headers
 
-    """
-    TODO: parse html to extract information
-    """
-    def __parse(self, dom:str) -> list:
+    def _NewHttpRequest(self, method:str, data=None):
+        res = super()._NewHttpRequest(method, data=data)
+        return res.text
+
+    def __parse(self, dom:str) -> list :
+        return []
         
 
-   def Run(self, method: str, data={}) -> None:
+    def Run(self, method: str, data=None) -> None:
        response = self._NewHttpRequest(method, data=data)
        if response != None:
            dom, _ = response.text

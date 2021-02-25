@@ -1,14 +1,10 @@
+from abc import ABCMeta, abstractmethod
 import requests
-import sys
-import threading
 
-class Spider:
+class Spider(metaclass=ABCMeta):
 
-    def __init__(self, url:str, headers:dict) -> None:
-        self.url = url
-        self.headers = headers 
-
-    def _NewHttpRequest(self, method:str, data={}) -> str:
+    @abstractmethod
+    def _NewHttpRequest(self, method:str, data=None):
         try:
             if method == "GET":
                 response = requests.get(url=self.url, headers=self.headers, data=data)
@@ -19,28 +15,16 @@ class Spider:
                 sys.exit()
 
             if response.status_code == 200:
-                return response.text, response.json()
+                return response
             else:
                 return None
 
         except ConnectionError as err:
              print("error: %s", err)
-             sys.exit()       
+             sys.exit()  
 
-    def Run(self, method: str, data={}) -> None:
-        _, res = self._NewHttpRequest(method, data)
-        if not res == None:
-            print(res)
-        else:
-            print("faild!\n")    
+    @abstractmethod
+    def Run(self, method:str, data=None) -> None:
+        pass
 
-    def AsyncRun(self, method:str, keywords:list) -> None:
-        """
-        get data by muti threads
-        """
-        threads = []
-        for index, data in enumerate(keywords):
-            threads.append(threading.Thread(target=self.Run, args=(method, data)))
-            threads[index].start()
-        for index in range(len(threads)):
-            threads[index].join()
+   
