@@ -1,4 +1,4 @@
-from pyquery import PyQuery as pq
+from bs4 import BeautifulSoup
 from .spider import Spider
 
 class WeiBo(Spider):
@@ -11,17 +11,20 @@ class WeiBo(Spider):
         res = super()._NewHttpRequest(method, data=data)
         return res.text
 
-    def __parse(self, dom:str) -> list :
-        return []
+    def parse(self, dom:str) -> list :
+        soup = BeautifulSoup(dom, "html.parser")
+        cards = soup.find_all("div", class_ = "card-feed")
+        for item in cards:
+            yield {
+                "content": item.find("p", class_ = "txt").text
+            }
         
 
     def Run(self, method: str, data=None) -> None:
        response = self._NewHttpRequest(method, data=data)
-       if response != None:
-           dom, _ = response.text
-           res = self.__parse(method, dom)
-           resp = pq(res).find('.card')  
-           print(resp)
+       res = self.parse(response)
+       for item in res:
+           print(item)
               
 
 

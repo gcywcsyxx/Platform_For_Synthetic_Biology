@@ -32,3 +32,12 @@ def BuildCNKIHeaders() -> dict:
         "Sec-Fetch-Site": "same-origin",
         "X-Requested-With": "XMLHttpRequest"
         }
+
+def BuildWeiBoURL() -> str:
+    return "https://s.weibo.com/weibo?q=%E9%83%AD%E9%BA%92%E9%BA%9F%E5%AE%8B%E8%BD%B6CP%E6%84%9F&Refer=STopic_history"
+
+def BuildWeiBoHeaders() -> dict:
+    return {
+        "User-Agent": utils.GetUserAgent(),
+        "Referer": "https://s.weibo.com/"
+    }
