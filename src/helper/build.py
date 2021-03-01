@@ -34,10 +34,15 @@ def BuildCNKIHeaders() -> dict:
         }
 
 def BuildWeiBoURL() -> str:
-    return "https://s.weibo.com/weibo?q=%E9%83%AD%E9%BA%92%E9%BA%9F%E5%AE%8B%E8%BD%B6CP%E6%84%9F&Refer=STopic_history"
+    return "https://m.weibo.cn/search?containerid=100103type%3D1%26q%3D%E5%8D%8E%E6%99%A8%E5%AE%87"
 
 def BuildWeiBoHeaders() -> dict:
     return {
+        "Accept": "application/json, text/plain, */*",
         "User-Agent": utils.GetUserAgent(),
-        "Referer": "https://s.weibo.com/"
+        "Referer": "https://m.weibo.cn/search?containerid=100103type=1&q=花花".encode("utf-8").decode("latin1"),
+        # "Host": "s.weibo.com",
+        "Cookie": "_T_WM=49164022889; XSRF-TOKEN=b33953; WEIBOCN_FROM=1110003030; SCF=AkerXndfs-Dk6QlWwOTYTsTq1MTG6cX1N-wik_uYXPUb9JCD2r003vgb8iQhMSiUwrm61E9-UPUJVRpgmgn7lZg.; SUB=_2A25NOJM4DeRhGeBO71IW8SfKyTyIHXVuwj1wrDV6PUJbktANLWffkW1NShKJKG8bLVNVGLSSs-EL9nHD3jaCBH59; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFbSZb88EHpc_7FWnm7OmZ95NHD95QcehB7S024Soz7Ws4DqcjKi--NiKyFiKnEi--Xi-zRiK.Xg5tt; SSOLoginState=1614603112; MLOGIN=1; M_WEIBOCN_PARAMS=uicode%3D10000011%26fid%3D100103",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-XSRF-TOKEN": "b33953"
     }

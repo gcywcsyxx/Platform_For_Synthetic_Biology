@@ -9,12 +9,12 @@ class CNKI(Spider):
         self.url = url
         self.headers = headers 
 
-    def _NewHttpRequest(self, method:str, data=None):
-        res = super()._NewHttpRequest(method, data=data)
+    def _NewHttpRequest(self, url:str, headers:str, method:str, data=None):
+        res = super()._NewHttpRequest(self.url, self.headers, method, data)
         return res.json()     
 
     def Run(self, method: str, data={}) -> None:
-        res = self._NewHttpRequest(method, data)
+        res = self._NewHttpRequest(self.url, self.headers, method, data)
         if not res == None:
             print(res)
         else:

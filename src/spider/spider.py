@@ -4,12 +4,12 @@ import requests
 class Spider(metaclass=ABCMeta):
 
     @abstractmethod
-    def _NewHttpRequest(self, method:str, data=None):
+    def _NewHttpRequest(self, url:str, headers:str, method:str, data=None):
         try:
             if method == "GET":
-                response = requests.get(url=self.url, headers=self.headers, data=data)
+                response = requests.get(url=url, headers=headers, data=data)
             elif method == "POST":
-                response = requests.post(url=self.url, headers=self.headers, data=data)
+                response = requests.post(url=url, headers=headers, data=data)
             else:
                 print("Invalid method: %s\n", method)
                 sys.exit()
