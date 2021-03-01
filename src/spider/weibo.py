@@ -61,6 +61,8 @@ class WeiBo(Spider):
                 for item in self.comments_data:
                     for each in item:
                         writer.writerow([each["nickname"],each["comment"]])
+                self.comments_data = []
+
 
 
 
