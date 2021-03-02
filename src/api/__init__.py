@@ -1,2 +1,8 @@
 from flask import Flask
-app = Flask(__name__)
+from . import routes
+
+def create_app(config_name="default"):
+    app = Flask(__name__)
+    routes.init_app(app)
+
+    return app
