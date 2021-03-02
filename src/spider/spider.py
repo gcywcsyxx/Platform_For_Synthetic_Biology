@@ -7,9 +7,9 @@ class Spider(metaclass=ABCMeta):
     def _NewHttpRequest(self, url:str, headers:str, method:str, data=None, proxies=None):
         try:
             if method == "GET":
-                response = requests.get(url=url, headers=headers, data=data)
+                response = requests.get(url=url, headers=headers, data=data, proxies=proxies)
             elif method == "POST":
-                response = requests.post(url=url, headers=headers, data=data)
+                response = requests.post(url=url, headers=headers, data=data, proxies=proxies)
             else:
                 print("Invalid method: %s\n", method)
                 sys.exit()

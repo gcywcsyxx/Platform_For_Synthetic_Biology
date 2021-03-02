@@ -1,3 +1,5 @@
+import streamlit as st
+
 from spider import cnki
 from spider import weibo
 from helper import build
@@ -11,4 +13,3 @@ def main(url=None, headers=None, method=None, keywords=None) -> None:
 if __name__ == '__main__':
     # main(build.BuildCNKIURL(), build.BuildCNKIHeaders(), "POST", build.BuildCNKIKeyWords())
     main(headers=build.BuildWeiBoHeaders())  
-    

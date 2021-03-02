@@ -7,7 +7,7 @@ import threading
 
 from bs4 import BeautifulSoup
 from .spider import Spider
-import utils
+
 
 
 class WeiBo(Spider):
@@ -110,7 +110,7 @@ class WeiBo(Spider):
     """
     def MutiRunComments(self, headers:str, id_list:list, file_list:list) -> None:
         thread_list = []
-        length = len(id_list):
+        length = len(id_list)
         for i in range(length):
             """
             change data of headers to avoid ban
