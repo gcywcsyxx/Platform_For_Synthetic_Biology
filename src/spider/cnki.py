@@ -9,7 +9,7 @@ class CNKI(Spider):
         self.url = url
         self.headers = headers 
 
-    def _NewHttpRequest(self, url:str, headers:str, method:str, data=None):
+    def _NewHttpRequest(self, url:str, headers:str, method:str, data=None, proxies=None):
         res = super()._NewHttpRequest(self.url, self.headers, method, data)
         return res.json()     
 

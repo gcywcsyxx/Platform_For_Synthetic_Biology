@@ -7,6 +7,7 @@ import threading
 
 from bs4 import BeautifulSoup
 from .spider import Spider
+import utils
 
 
 class WeiBo(Spider):
@@ -14,7 +15,7 @@ class WeiBo(Spider):
     def __init__(self) -> None:
         pass
 
-    def _NewHttpRequest(self, url:str, headers: str, method:str, data=None):
+    def _NewHttpRequest(self, url:str, headers: str, method:str, data=None, proxies=None):
         res = super()._NewHttpRequest(url, headers, method, data=data)
         return res
 
@@ -111,6 +112,10 @@ class WeiBo(Spider):
         thread_list = []
         length = len(id_list):
         for i in range(length):
+            """
+            change data of headers to avoid ban
+            """
+            headers["User-Agent"] = utils.GetUserAgent()
             thread_list.append(threading.Thread(target=self.RunComments, args=(headers, id_list[i], file_list[i])))
             thread_list[i].start()
 

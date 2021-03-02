@@ -24,9 +24,27 @@ user_agent_pool = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 ]
 
+proxy_pool:[
+    {'http': '118.190.95.43:9001'},
+    {'http': '118.190.95.35:9001'},
+    {'http': '101.236.35.98:8866'},
+    {'http': '101.236.23.202:8866'},
+    {'http': '175.11.213.25:808'},
+    {'http': '106.56.102.141:8070'},
+    {'http': '121.231.155.161:6666'},
+    {'http': '120.25.81.117:80'},
+    {'http': '117.63.78.100:6666'},
+    {'http': '111.231.115.150:8888'},
+    {'http': '222.185.23.251:6666'},
+    {'http': '106.56.102.107:8070'},
+    {'http': '118.114.77.47:8080'},
+    {'http': '115.28.90.79:9001'},
+    {'http': '58.57.75.142:63000'}
+]
+
 
 def GetUserAgent() -> str:
     return random.choice(user_agent_pool)
 
-def GetProxy() -> str:
-    return ""    
+def GetProxy() -> dict:
+    return random .choice(proxy_pool)  

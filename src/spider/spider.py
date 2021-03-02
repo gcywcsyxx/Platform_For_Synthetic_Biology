@@ -4,7 +4,7 @@ import requests
 class Spider(metaclass=ABCMeta):
 
     @abstractmethod
-    def _NewHttpRequest(self, url:str, headers:str, method:str, data=None):
+    def _NewHttpRequest(self, url:str, headers:str, method:str, data=None, proxies=None):
         try:
             if method == "GET":
                 response = requests.get(url=url, headers=headers, data=data)
