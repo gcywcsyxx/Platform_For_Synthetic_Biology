@@ -3,6 +3,7 @@ import sys
 import time
 import re
 import csv
+import threading
 
 from bs4 import BeautifulSoup
 from .spider import Spider
@@ -103,8 +104,20 @@ class WeiBo(Spider):
             print("Fail to request comments")
             sys.exit()
 
-    def AsyncRunComments(self, headers:str, id_list:list, file_list:list) -> None:
-        pass         
+    """
+    Mutiple threads to run program to get data
+    """
+    def MutiRunComments(self, headers:str, id_list:list, file_list:list) -> None:
+        thread_list = []
+        length = len(id_list):
+        for i in range(length):
+            thread_list.append(threading.Thread(target=self.RunComments, args=(headers, id_list[i], file_list[i])))
+            thread_list[i].start()
+
+        for i in range(length):
+            thread_list[i].join()    
+
+
 
 
 
