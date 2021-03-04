@@ -15,4 +15,4 @@ class DataBase:
             database = self.database,
             cursorclass = pymysql.cursors.DictCursor
         )
-        self.connection = connection
+        return connection

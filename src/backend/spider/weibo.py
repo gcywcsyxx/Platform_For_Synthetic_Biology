@@ -7,6 +7,7 @@ import threading
 
 from bs4 import BeautifulSoup
 from .spider import Spider
+from .mysql import DataBase
 
 
 
@@ -66,7 +67,10 @@ class WeiBo(Spider):
                 self.comments_data = []
 
 
-
+    def StoreDB(self, host, username, password, db, sql) -> None:
+        connection = DataBase(host, username, password, db).connect()
+        with connection.cursor() as cursor:
+            cursor.execute(sql)
 
     def RunComments(self, headers, id, file):
         self.comments_data = []
